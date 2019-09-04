@@ -1,2 +1,8 @@
 <h1> Game on! it's... </h1>
 <h1> <%= @player_1 %> vs <%= @player_2 %>!!</h1>
+<br>
+<h2> <%= @player_2 %> has 0 hit points </h2>
+<br>
+<form action="/attack">
+  <input type="submit" value="Attack Player 2">
+</form>
