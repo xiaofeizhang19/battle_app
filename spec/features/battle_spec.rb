@@ -29,4 +29,10 @@ feature 'battle_spec tests' do
     end
   end
   
+  feature 'switching turns' do
+    scenario 'switching turns' do
+      sign_in_and_play
+      expect($game.current_turn.name).to eq 'Bob'
+    end
+  end
 end
