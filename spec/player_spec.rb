@@ -16,10 +16,5 @@ describe Player do
     end
   end
 
-  describe '#attack' do
-    it 'attacks the player' do
-      bob.attack(marley)
-      expect(marley.hit_points).to eq 90
-    end
-  end
+
 end
