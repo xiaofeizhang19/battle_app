@@ -8,7 +8,7 @@ feature 'battle_spec tests' do
     end
   end
 
-  feature 'hit points' do
+  feature 'view hit points' do
     scenario 'player 1 can see player 2 hit points' do
       sign_in_and_play
       expect(page).to have_content 'Marley has 0 hit points'
@@ -21,6 +21,12 @@ feature 'battle_spec tests' do
       click_button 'Attack Player 2'
       expect(page).to have_content 'Marley has been attacked'
     end
-  end
 
+    scenario 'player 1 reduces player 2\'s hit points by 10' do
+      sign_in_and_play
+      click_button 'Attack Player 2'
+      expect(page).to have_content 'Marley: 90 HP'
+    end
+  end
+  
 end
