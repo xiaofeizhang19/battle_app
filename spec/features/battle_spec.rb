@@ -11,7 +11,7 @@ feature 'battle_spec tests' do
   feature 'view hit points' do
     scenario 'player 1 can see player 2 hit points' do
       sign_in_and_play
-      expect(page).to have_content 'Marley has 0 hit points'
+      expect(page).to have_content 'Marley has 100 hit points'
     end
   end
 
