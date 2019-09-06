@@ -32,5 +32,4 @@ describe Player do
       expect(bob.lost?).to eq(true)
     end
   end
-
 end

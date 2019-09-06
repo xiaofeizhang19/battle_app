@@ -13,5 +13,4 @@ class Player
   def lost?
     @hit_points <= 0
   end
-
 end
