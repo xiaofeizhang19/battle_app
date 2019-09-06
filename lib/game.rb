@@ -1,3 +1,5 @@
+require './lib/player'
+
 class Game
 attr_reader :player_1, :player_2, :current_turn
 
@@ -23,6 +25,14 @@ attr_reader :player_1, :player_2, :current_turn
     else
       @current_turn = @player_1
     end
+  end
+
+  def game_over?
+    @player_1.lost? || @player_2.lost?
+  end
+
+  def loser
+    @player_1.lost? ? @player_1 : @player_2
   end
 end
 

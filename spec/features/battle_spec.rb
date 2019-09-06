@@ -11,12 +11,12 @@ feature 'battle_spec tests' do
   feature 'view hit points' do
     scenario 'player 1 can see their own own hit points' do
       sign_in_and_play
-      expect(page).to have_content 'Bob has 100 hit points'
+      expect(page).to have_content 'Bob has 60 hit points'
     end
 
     scenario 'player 1 can see player 2 hit points' do
       sign_in_and_play
-      expect(page).to have_content 'Marley has 100 hit points'
+      expect(page).to have_content 'Marley has 60 hit points'
     end
   end
 
@@ -30,7 +30,7 @@ feature 'battle_spec tests' do
     scenario 'player 1 reduces player 2\'s hit points by 10' do
       sign_in_and_play
       click_button 'Attack'
-      expect(page).to have_content 'Marley: 90 HP'
+      expect(page).to have_content 'Marley: 50 HP'
     end
   end
   
@@ -45,15 +45,23 @@ feature 'battle_spec tests' do
       sign_in_and_play
       click_button 'Attack'
       expect(page).not_to have_content 'It\' Bob\'s turn'
-      expect(page).to have_content 'It\'s Marley\'s turn'
+      expect(page).to have_content 'It\'s Marley\'s turn next'
     end
 
     scenario 'after player 2 attacks' do
       sign_in_and_play
-      click_button 'Attack'
-      click_button 'OK'
+      attack_and_confirm
       click_button 'Attack'
       expect(page).not_to have_content 'It\'s Marley\'s turn'
       expect(page).to have_content 'It\'s Bob\'s turn'
+    end
+
+    feature 'game over' do
+      scenario 'when one player reaches 0 hit point' do
+        sign_in_and_play
+        10.times { attack_and_confirm }   
+        click_button 'Attack'
+        expect(page).to have_content 'Marley loses'
+      end
     end
 end

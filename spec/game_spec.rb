@@ -33,6 +33,19 @@ describe Game do
     end
   end
 
+  describe '#game_over?' do
+    it 'returns false if no one reaches 0 hit points' do
+      allow(player_1).to receive(:lost?).and_return(false)
+      allow(player_2).to receive(:lost?).and_return(false)
+      expect(game.game_over?).to eq(false)
+    end
+
+    it 'returns true if any player reaches 0 hit points' do
+      allow(player_1).to receive(:lost?).and_return(true)
+      expect(game.game_over?).to eq(true)
+    end
+  end
+
 
 end
 
