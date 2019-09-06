@@ -5,15 +5,24 @@ attr_reader :player_1, :player_2, :current_turn
     @player_1 = player_1
     @player_2 = player_2
     @current_turn = @player_1
+    @opponent = @player_2
   end
-
 
   def attack(player)
     player.reduce_hp
   end
 
+  def opponent
+    return @opponent = @player_1 if current_turn == @player_2
+    @opponent = @player_2
+  end
+
   def switch_turns
-    @current_turn = @player_1 ? @player_2 : @player_1
+    if @current_turn == @player_1
+      @current_turn = @player_2
+    else
+      @current_turn = @player_1
+    end
   end
 end
 

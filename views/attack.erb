@@ -1,2 +1,12 @@
-<h1><%= @game.player_2.name %> has been attacked </h1>
-<h2><%= @game.player_2.name %>: <%= @game.player_2.hit_points %> HP </h2>
+<h1><%= @game.opponent.name %> has been attacked </h1>
+<h2><%= @game.opponent.name %>: <%= @game.opponent.hit_points %> HP </h2>
+
+<br>
+<h2> It's <%=@game.opponent.name%>'s turn </h2>
+<br>
+
+<br>
+<form  action="/switch-turns" method="post">
+  <input class="default" type="submit" value="OK">
+</form>
+<br>
